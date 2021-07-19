@@ -4,15 +4,27 @@ import "./App.css";
 
 function App() {
   const [users, setUsers] = useState();
+  const [text, setText] = useState("");
   useEffect(() => {
     getData().then((res) => {
-      console.log(res)
       setUsers(res);
     });
   }, []);
+
+  const onchangeHandler = (text) => {
+    setText(text);
+    console.log(text);
+  };
   return (
-    <div className="App">
-      <input type="text"></input>
+    <div className="container">
+      {console.log(text)}
+
+      <input
+        type="text"
+        className="col-md-12 input"
+        onChange={(e) => onchangeHandler(e.target.value)}
+        value={text}
+      ></input>
     </div>
   );
 }
